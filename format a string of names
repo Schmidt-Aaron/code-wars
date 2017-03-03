@@ -1,0 +1,32 @@
+//Format a string of names like 'Bart, Lisa & Maggie'.
+
+function list(names){
+  
+  var format = function(arr){
+    let nameList = [];
+      if(arr.length === 0 ){
+        return "";
+      } else 
+      if(arr.length === 1){
+        return arr[0].name;
+      } else 
+      if(arr.length === 2) {
+        return arr[0].name + " & " + arr[1].name;
+      } else
+      if(arr.length > 2) {
+        for(var i = 0; i < arr.length - 2; i++){
+          nameList.push(arr[i].name + ", ");
+        }
+        nameList.push(arr[arr.length - 2].name + " & " + arr[arr.length -1].name);
+        return nameList.join("");
+    }
+  };
+  
+  return format(names);
+}
+//tests 
+//list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'}, {name: 'Maggie'} ])
+//list([ {name: 'Bart'}, {name: 'Lisa'} ])
+//list([ {name: 'Bart'} ])
+//list([  ])
+// returns 'Bart, Lisa & Maggie'
