@@ -1,0 +1,10 @@
+//This snippet will return the middle character if the length of the string is odd
+// or the middle two characters if the length is even
+
+function getMiddle(s)
+{ 
+ var middle = s.length / 2;
+ return s.length % 2 !== 0 ?
+  s.charAt(Math.floor(middle)):
+  s.substr(middle -1 , 2);
+}
