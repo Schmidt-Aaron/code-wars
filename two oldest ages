@@ -1,0 +1,7 @@
+//return the two "oldest" ages from an array
+// I returned the first two numbers of a reverse sort
+
+function twoOldestAges(ages){
+  return ages.sort((x,y) => {return y - x}).slice(0,2);
+
+}
