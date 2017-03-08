@@ -2,6 +2,8 @@
 // I returned the first two numbers of a reverse sort
 
 function twoOldestAges(ages){
-  return ages.sort((x,y) => {return y - x}).slice(0,2);
+  return ages.sort((x,y) => {return x - y}).slice(ages.length - 2, ages.length);
+
+}
 
 }
