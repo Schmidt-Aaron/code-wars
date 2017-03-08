@@ -1,0 +1,13 @@
+// lvl 8 kyu problem
+// returns a different array with either the square root of the number, if the root is an integer, or the square of
+// the number if is not an integer
+
+
+function squareOrSquareRoot(array) {
+  var arr = array.map(n => {
+    var num = Math.sqrt(n);
+    return Number.isInteger(num) ? num : Math.pow(n, 2);
+  });
+
+  return arr;   
+}
