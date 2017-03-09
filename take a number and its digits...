@@ -1,0 +1,28 @@
+function sumDigPow(a, b) {
+  let nums = [];
+  let digs = [];
+  //generate our numbers
+  for(var i = a; i <= b; i++) {
+    nums.push(i);
+  }
+  
+  //convert the numbers into array
+  function converted(n) {
+    return n.toString().split("");
+  }
+  
+  //test the numbers
+   function test(n) {
+     let arr = converted(n);
+     let sum = 0;
+     let count = 1;
+     for( let i = 0; i < arr.length; i++){
+       let num = Math.pow(arr[i], count);
+       sum += num;
+       count++;
+     }
+     return n === sum;
+   }
+  
+  return nums.filter(test);
+}
