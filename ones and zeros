@@ -1,0 +1,8 @@
+//converts an array  of 1's and 0's into a base 10 number
+
+const binaryArrayToNumber = arr => {
+  let str = arr.reduce((a, b) => { return a.concat(b)}, "");
+  return parseInt(str, 2);
+};
+
+//binaryArrayToNumber([0, 0, 1, 1]); //3
