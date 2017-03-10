@@ -1,0 +1,53 @@
+//first solution
+var uniqueInOrder = function(iterable) {
+  var ans = [];
+  
+  if(typeof iterable === "string") {
+    iterable = iterable.split('');
+  }
+  
+  for(var i = 0; i < iterable.length;) {
+    if(iterable[i] === iterable[i - 1]) {
+      i++;
+    } else {
+      ans.push(iterable[i]);
+      i++;
+    }
+  }
+  return ans;
+};
+
+//refactored
+var uniqueInOrder = function(iterable) {
+  var ans = [];
+  
+  for(var i = 0; i < iterable.length; i++) {
+    if(iterable[i] === iterable[i - 1]) {
+    } else {
+      ans.push(iterable[i]);
+    }
+  }
+  return ans;
+};
+
+//refactor
+var uniqueInOrder = function(iterable) {
+  var ans = [];
+  
+  for(var i = 0; i < iterable.length; i++) {
+    if(iterable[i] !== iterable[i - 1]) {
+      ans.push(iterable[i]);
+    }
+  }
+  return ans;
+};
+
+//ES6 version
+var uniqueInOrder = function(iterable) {
+  
+  return []
+    .filter
+    .call(iterable, (a, i) => {
+      return iterable[i-1] !== a;
+  });
+};
