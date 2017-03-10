@@ -1,0 +1,31 @@
+//kyu 6
+function duplicateEncode(word){
+   var chars = word.toLowerCase().split('').map((x) => x.charCodeAt(0));
+   var ans = [];
+   
+  
+      for(var i = 0; i < chars.length; i++) {
+        for(var j = 0 ; j < chars.length; j++ ) {
+         if(i != j && chars[i] === chars[j]) {
+           ans.push(")");
+           break;
+         } else if(j === chars.length -1) {
+           ans.push("(");
+         }
+         }
+       }
+   
+   return ans.join('');
+}
+
+//Refactored
+
+function duplicateEncode(word){
+   return word
+     .toLowerCase()
+     .split('')
+     .map((a, i, b) => {
+       return b.indexOf(a) === b.lastIndexOf(a) ? ")" : "(";
+     });
+   
+}
