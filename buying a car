@@ -1,0 +1,33 @@
+//first attempt
+function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth){
+  let money = startPriceOld; 
+  let savings = 0;
+  let months = 0;
+  let count = 0;
+  percentLossByMonth = percentLossByMonth * 10;
+  
+  
+  while (money <= startPriceNew) {
+    count++;
+    
+    if(count === 2 ){
+      percentLossByMonth += 5;
+      count = 0;
+    }
+    
+    (startPriceNew *= 1 - percentLossByMonth / 1000);
+    (startPriceOld *= 1 - percentLossByMonth / 1000);
+    savings += savingperMonth;
+    money = savings + startPriceOld;
+    months++;
+  }
+
+  money = Math.round(money - startPriceNew);
+  
+  return [months, money];
+  
+}
+
+nbMonths(1900 ,2500 ,1000 ,1.3);
+
+//refactor
