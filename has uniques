@@ -1,0 +1,26 @@
+// check a str to see if every character is unique
+//1st attempt; couldn't get foreach to work so had to go old school :(
+
+function hasUniqueChars(str){
+  var arr = str.split('').map(e => e.charCodeAt(0)).sort();
+  for(var i = 1; i < arr.length; i++) {
+    if(arr[i] === arr[i-1]) {
+      return false;
+    } 
+  }
+  return true;
+}
+
+///I should be able to refactor this 
+
+//using js Set object -- NEAT
+function hasUniqueChars(str){
+ return new Set(str).size === str.length;
+}
+
+//using every and indexOf/lastIndexOf
+function hasUniqueChars(str){
+ return str.split('').every((e, ind, arr) => {
+   return arr.indexOf(e) === ind;
+ });
+}
