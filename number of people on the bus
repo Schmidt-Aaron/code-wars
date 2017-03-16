@@ -1,0 +1,23 @@
+//cycle through an array of an array and reduce it twice to get the sum
+//1st attempt
+
+var number = function(busStops){
+  var sum = 0;
+  busStops.forEach(function(e){
+    sum += e[0];
+    sum -= e[1];
+  });
+  return sum;
+};
+
+//sencond attempt: a single reduce statement is all it took. Once I saw that I could pass the entire array as one variable
+//and the sum as the other it was simple. 
+
+var number = function(busStops){
+  return busStops.reduce(function(sum, [on, off]) {
+    return sum + on - off;
+  }, 0);
+};
+
+number([[10,0],[3,5],[5,8]]); //5
+
