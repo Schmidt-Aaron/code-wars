@@ -1,8 +1,10 @@
+//working logic, not refactored. 
+
 function door(events) {
   let arr = events.split("");
-  let count = 0;
-  let direction;
-  let status;
+  let count = 0;    //starts closed
+  let direction = "up";  //up or down
+  let status = "off";     //on or off
   let output = [];
   
   function add(){
@@ -11,36 +13,45 @@ function door(events) {
       }
     }
   function minus(){
-      if(count > 1) {
+      if(count > 0) {
         count--;
       }
     }
-    
+  function toggle(){
+    if(direction === "up"){direction = "down"}
+    else if(direction === "down"){direction = "up"}
+  }  
+  
   function event(e){
     if(e === 'O'){
-      direction = "up";
+      toggle();
     } else
     if(e === 'P'){
-      if(direction === undefined) {
-         direction = "down";
+      if(status === "off") {
+         status = "on";
     } else
-    if (direction === "down" ) {
-      direction = undefined;
-    } else 
+    if (status === "on") {
+      status = "off";
+    } 
     
-    //if(e === "."){} do not change state
     }
   } 
   
   for (var i = 0; i < arr.length; i++){
     event(arr[i]);
-    //console.log(status);
-    
-      if(direction === "down"){
-        add();
-      }
-      if(direction === "up") {
+      if(direction === "down" && status === "on"){
         minus();
+        if(count === 0) {
+          status = "off";
+          toggle();
+        }
+      }
+      if(direction === "up" && status === "on") {
+        add();
+        if(count === 5) {
+          status = "off";
+          toggle();
+        }
       }
     
     //console.log(count);
@@ -49,4 +60,3 @@ function door(events) {
     //console.log(output.join(""))
   return output.join("");
 }
-door('P.P.P....'); // '122234555'
