@@ -1,0 +1,61 @@
+//work in progress
+//currently no logic for opening "up"
+//https://www.codewars.com/kata/killer-garage-door/train/javascript
+
+function door(events) {
+  let arr = events.split("");
+  let count = 0;
+  let pause = true;
+  let status;
+  let output = [];
+  
+  function add(){
+      if(count < 5) {
+        count++;
+      }
+    }
+  function minus(){
+      if(count > 1) {
+        count--;
+      }
+    }
+    
+  function event(e){
+    if(e === 'O'){
+      status = "up";
+      pause = false;
+    } else
+    if(e === 'P'){
+      if(status === undefined) {
+         status = "down";
+         pause = false;
+    } else
+    if (status === "down" && pause === false) {
+      pause = true;
+    } else 
+    if(status === "down" && pause === true ) {
+      pause = false;
+    }
+    //if(e === "."){} do not change state
+    }
+  } 
+  
+  for (var i = 0; i < arr.length; i++){
+    event(arr[i]);
+    //console.log(status);
+    if (pause === false){
+      if(status === "down"){
+        add();
+      }
+      if(status === "up") {
+        minus();
+      }
+    }
+    console.log(count);
+    output.push(count);
+  }
+    //console.log(output.join(""))
+  return output.join("");
+}
+
+door('P.P.P....'); // '122234555'
